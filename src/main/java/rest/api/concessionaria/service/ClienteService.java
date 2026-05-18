@@ -1,6 +1,7 @@
 package rest.api.concessionaria.service;
 
 import org.springframework.stereotype.Service;
+import rest.api.concessionaria.entity.Cliente;
 import rest.api.concessionaria.repository.ClienteRepository;
 
 @Service
@@ -10,5 +11,9 @@ public class ClienteService {
 
     public ClienteService(ClienteRepository clienteRepository) {
         this.clienteRepository = clienteRepository;
+    }
+
+    public void cadastrarCliente(Cliente cliente) {
+        this.clienteRepository.save(cliente);
     }
 }
