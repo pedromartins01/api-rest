@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import rest.api.concessionaria.model.VeiculoDTO;
 
 import java.util.UUID;
 
@@ -18,8 +19,9 @@ public class Veiculo {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
-    @Column(nullable = false)
-    private UUID clienteId;
+    @ManyToOne
+    @JoinColumn(name = "id_cliente", nullable = false)
+    private Cliente cliente;
 
     @Column(nullable = false)
     private String marca;
@@ -42,6 +44,18 @@ public class Veiculo {
     @Column(nullable = false)
     private Boolean vendido;
 
-    @Column ()
     private Double valorVenda;
+
+    public Veiculo(VeiculoDTO dto, Cliente cliente) {
+        this.cliente = cliente;
+        this.marca = dto.getMarca();
+        this.modelo = dto.getModelo();
+        this.ano = dto.getAno();
+        this.valor = dto.getValor();
+        this.placa = dto.getPlaca();
+        this.maximoDesconto = dto.getMaximoDesconto();
+        this.vendido = dto.getVendido();
+        this.valorVenda = dto.getValorVenda();
+    }
+
 }

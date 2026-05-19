@@ -1,9 +1,10 @@
 package rest.api.concessionaria.controller;
 
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import rest.api.concessionaria.entity.Cliente;
+import rest.api.concessionaria.model.ClienteDTO;
 import rest.api.concessionaria.service.ClienteService;
 
 @RestController
@@ -18,10 +19,9 @@ public class ClienteController {
     }
 
     @PostMapping
-    public ResponseEntity<Void> cadastrarCliente (@RequestBody Cliente cliente) {
+    public ResponseEntity<Void> cadastrarCliente (@Valid @RequestBody ClienteDTO cliente) {
         this.clienteService.cadastrarCliente(cliente);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
-    @GetMapping
 }

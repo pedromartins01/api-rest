@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import rest.api.concessionaria.model.ClienteDTO;
 
 import java.util.UUID;
 
@@ -30,5 +31,11 @@ public class Cliente {
     @Column(nullable = false)
     private String email;
 
+    public Cliente(ClienteDTO dto) {
+        this.nome = dto.getNome();
+        this.telefone = dto.getTelefone();
+        this.cpf = dto.getCpf();
+        this.email = dto.getEmail();
+    }
 
 }
