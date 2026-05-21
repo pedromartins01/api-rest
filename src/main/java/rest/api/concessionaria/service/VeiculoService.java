@@ -6,7 +6,7 @@ import rest.api.concessionaria.entity.Veiculo;
 import rest.api.concessionaria.exception.ConflitoException;
 import rest.api.concessionaria.exception.DadosInvalidosException;
 import rest.api.concessionaria.exception.RecursoNaoEncontradoException;
-import rest.api.concessionaria.model.VeiculoBuscarDTO;
+import rest.api.concessionaria.model.VeiculoDTO;
 import rest.api.concessionaria.model.VeiculoInput;
 import rest.api.concessionaria.model.VeiculoUpdateInput;
 import rest.api.concessionaria.repository.ClienteRepository;
@@ -40,7 +40,7 @@ public class VeiculoService {
         this.veiculoRepository.save(veiculo);
     }
 
-    public List<VeiculoBuscarDTO> buscarVeiculos(String placa, String marca, String modelo) {
+    public List<VeiculoDTO> buscarVeiculos(String placa, String marca, String modelo) {
         List<Veiculo> veiculos;
 
         if (placa != null) {
@@ -53,9 +53,9 @@ public class VeiculoService {
             veiculos = this.veiculoRepository.findAll();
         }
 
-        List<VeiculoBuscarDTO> resultado = new ArrayList<>();
+        List<VeiculoDTO> resultado = new ArrayList<>();
         for (Veiculo veiculo : veiculos) {
-            resultado.add(new VeiculoBuscarDTO(veiculo));
+            resultado.add(new VeiculoDTO(veiculo));
         }
         return resultado;
     }

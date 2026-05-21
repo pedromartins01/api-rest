@@ -4,7 +4,7 @@ import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import rest.api.concessionaria.model.VeiculoBuscarDTO;
+import rest.api.concessionaria.model.VeiculoDTO;
 import rest.api.concessionaria.model.VeiculoInput;
 import rest.api.concessionaria.model.VeiculoUpdateInput;
 import rest.api.concessionaria.service.VeiculoService;
@@ -30,11 +30,11 @@ public class VeiculoController {
     }
 
     @GetMapping
-    public ResponseEntity<List<VeiculoBuscarDTO>> buscarVeiculos(
+    public ResponseEntity<List<VeiculoDTO>> buscarVeiculos(
             @RequestParam(required = false) String placa,
             @RequestParam(required = false) String marca,
             @RequestParam(required = false) String modelo) {
-        List<VeiculoBuscarDTO> veiculos = this.veiculoService.buscarVeiculos(placa, marca, modelo);
+        List<VeiculoDTO> veiculos = this.veiculoService.buscarVeiculos(placa, marca, modelo);
         return ResponseEntity.status(HttpStatus.OK).body(veiculos);
     }
 

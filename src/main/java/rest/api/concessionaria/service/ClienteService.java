@@ -4,7 +4,7 @@ import org.springframework.stereotype.Service;
 import rest.api.concessionaria.entity.Cliente;
 import rest.api.concessionaria.exception.ConflitoException;
 import rest.api.concessionaria.exception.RecursoNaoEncontradoException;
-import rest.api.concessionaria.model.ClienteBuscarDTO;
+import rest.api.concessionaria.model.ClienteDTO;
 import rest.api.concessionaria.model.ClienteInput;
 import rest.api.concessionaria.repository.ClienteRepository;
 
@@ -29,7 +29,7 @@ public class ClienteService {
         this.clienteRepository.save(cliente);
     }
 
-    public List<ClienteBuscarDTO> buscarClientes(String nome, String cpf) {
+    public List<ClienteDTO> buscarClientes(String nome, String cpf) {
         List<Cliente> clientes;
 
         if (nome != null) {
@@ -40,9 +40,9 @@ public class ClienteService {
             clientes = this.clienteRepository.findAll();
         }
 
-        List<ClienteBuscarDTO> resultado = new ArrayList<>();
+        List<ClienteDTO> resultado = new ArrayList<>();
         for (Cliente cliente : clientes) {
-            resultado.add(new ClienteBuscarDTO(cliente));
+            resultado.add(new ClienteDTO(cliente));
         }
         return resultado;
     }

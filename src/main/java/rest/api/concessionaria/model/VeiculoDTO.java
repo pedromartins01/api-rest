@@ -11,7 +11,7 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 
-public class VeiculoBuscarDTO {
+public class VeiculoDTO {
 
         private UUID id;
         private UUID clienteId;
@@ -24,7 +24,7 @@ public class VeiculoBuscarDTO {
         private Boolean vendido;
         private Double valorVenda;
 
-        public VeiculoBuscarDTO(Veiculo veiculo) {
+        public VeiculoDTO(Veiculo veiculo) {
             this.id = veiculo.getId();
             this.clienteId = veiculo.getCliente().getId();
             this.marca = veiculo.getMarca();
