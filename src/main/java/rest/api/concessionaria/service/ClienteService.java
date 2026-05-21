@@ -3,12 +3,14 @@ package rest.api.concessionaria.service;
 import org.springframework.stereotype.Service;
 import rest.api.concessionaria.entity.Cliente;
 import rest.api.concessionaria.exception.ConflitoException;
+import rest.api.concessionaria.exception.RecursoNaoEncontradoException;
 import rest.api.concessionaria.model.ClienteBuscarDTO;
 import rest.api.concessionaria.model.ClienteDTO;
 import rest.api.concessionaria.repository.ClienteRepository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class ClienteService {
@@ -43,5 +45,12 @@ public class ClienteService {
             resultado.add(new ClienteBuscarDTO(cliente));
         }
         return resultado;
+    }
+
+    public void removerCliente(UUID id) {
+        if (!this.clienteRepository.existsById(id)) {
+            throw new RecursoNaoEncontradoException("Cliente não encontrado");
+        }
+        this.clienteRepository.deleteById(id);
     }
 }

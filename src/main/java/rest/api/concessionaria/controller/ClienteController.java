@@ -9,6 +9,7 @@ import rest.api.concessionaria.model.ClienteDTO;
 import rest.api.concessionaria.service.ClienteService;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/v1/cliente")
@@ -35,4 +36,9 @@ public class ClienteController {
         return ResponseEntity.status(HttpStatus.OK).body(clientes);
     }
 
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> removerCliente(@PathVariable UUID id) {
+        this.clienteService.removerCliente(id);
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+    }
 }
