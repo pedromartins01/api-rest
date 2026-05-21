@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import rest.api.concessionaria.model.VeiculoDTO;
+import rest.api.concessionaria.model.VeiculoInput;
 
 import java.util.UUID;
 
@@ -46,7 +46,7 @@ public class Veiculo {
 
     private Double valorVenda;
 
-    public Veiculo(VeiculoDTO dto, Cliente cliente) {
+    public Veiculo(VeiculoInput dto, Cliente cliente) {
         this.cliente = cliente;
         this.marca = dto.getMarca();
         this.modelo = dto.getModelo();

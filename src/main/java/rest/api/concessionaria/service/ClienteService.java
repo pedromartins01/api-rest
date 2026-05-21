@@ -5,7 +5,7 @@ import rest.api.concessionaria.entity.Cliente;
 import rest.api.concessionaria.exception.ConflitoException;
 import rest.api.concessionaria.exception.RecursoNaoEncontradoException;
 import rest.api.concessionaria.model.ClienteBuscarDTO;
-import rest.api.concessionaria.model.ClienteDTO;
+import rest.api.concessionaria.model.ClienteInput;
 import rest.api.concessionaria.repository.ClienteRepository;
 
 import java.util.ArrayList;
@@ -21,7 +21,7 @@ public class ClienteService {
         this.clienteRepository = clienteRepository;
     }
 
-    public void cadastrarCliente(ClienteDTO dto) {
+    public void cadastrarCliente(ClienteInput dto) {
         if (this.clienteRepository.existsByCpf(dto.getCpf())) {
             throw new ConflitoException("CPF já cadastrado");
         }

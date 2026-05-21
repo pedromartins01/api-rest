@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 
-public class ClienteDTO {
+public class ClienteInput {
 
     @NotBlank
     private String nome;
