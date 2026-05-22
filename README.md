@@ -26,13 +26,12 @@ API REST desenvolvida com Java + Spring Boot + PostgreSQL para gerenciamento de 
 
 ## ⚙️ Estrutura do Projeto
 src/main/java
-│
-├── controller
-├── service
-├── repository
-├── entity
-├── model
-└── exception
+- controller
+- service
+- repository
+- entity
+- model
+- exception
 
 ## 🌑 Regras Implementadas
 
@@ -72,9 +71,18 @@ src/main/java
 | DELETE | /api/v1/veiculo/{id} |
 
 ## 🌑 Exemplos de Busca
-GET /api/v1/veiculo?placa=ABC1234
-GET /api/v1/veiculo?marca=Toyota
-GET /api/v1/veiculo?modelo=Corolla
+
+**Buscar por placa:**
+
+`GET /api/v1/veiculo?placa=ABC1234`
+
+**Buscar por marca:**
+
+`GET /api/v1/veiculo?marca=Toyota`
+
+**Buscar por modelo:**
+
+`GET /api/v1/veiculo?modelo=Corolla`
 
 ## ⚫ Banco de Dados
 
